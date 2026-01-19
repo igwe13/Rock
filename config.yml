@@ -3,19 +3,29 @@ backend:
   branch: main
 
 media_folder: "images/uploads"
-public_folder: "images/uploads"
+public_folder: "/images/uploads" # Added the slash here to help the pathing
 
 collections:
   - name: "inventory"
     label: "Shop Inventory"
     folder: "content/inventory"
-    create: true # This allows her to add new clothes
-    delete: true # This allows her to REMOVE clothes
+    create: true
+    delete: true
     slug: "{{slug}}"
+    # MOBILE UI FIX: This makes the list view much easier to read on a phone
+    summary: "{{title}} - {{category}}" 
     fields:
       - { label: "Product Title", name: "title", widget: "string" }
-      - { label: "Category", name: "category", widget: "select", options: ["suit", "collection", "solar", "books"] }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: 
+          - { label: "Signature Suits", value: "suit" }
+          - { label: "Leisure Set", value: "collection" }
+          - { label: "Solar Utilities", value: "solar" }
+          - { label: "Books", value: "books" }
       - { label: "Product Image", name: "image", widget: "image" }
+      - { label: "Price (Optional)", name: "price", widget: "string", required: false }
 
   - name: "settings"
     label: "Site Settings"
