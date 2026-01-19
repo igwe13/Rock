@@ -3,7 +3,7 @@ backend:
   branch: main
 
 media_folder: "images/uploads"
-public_folder: "/images/uploads" # Added the slash here to help the pathing
+public_folder: "images/uploads"
 
 collections:
   - name: "inventory"
@@ -12,7 +12,7 @@ collections:
     create: true
     delete: true
     slug: "{{slug}}"
-    # MOBILE UI FIX: This makes the list view much easier to read on a phone
+    # Makes the list easy to read on her phone
     summary: "{{title}} - {{category}}" 
     fields:
       - { label: "Product Title", name: "title", widget: "string" }
@@ -25,13 +25,11 @@ collections:
           - { label: "Solar Utilities", value: "solar" }
           - { label: "Books", value: "books" }
       - { label: "Product Image", name: "image", widget: "image" }
-      - { label: "Price (Optional)", name: "price", widget: "string", required: false }
+      - { label: "Price", name: "price", widget: "string", required: false }
 
   - name: "settings"
     label: "Site Settings"
     delete: false
-    editor:
-      preview: false
     files:
       - name: "contact_info"
         label: "Contact & Socials"
@@ -39,4 +37,3 @@ collections:
         fields:
           - { label: "WhatsApp Number", name: "whatsapp", widget: "string" }
           - { label: "Business Location", name: "address", widget: "text" }
-          - { label: "Shop Intro Text", name: "intro", widget: "text" }
