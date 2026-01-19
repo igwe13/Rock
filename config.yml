@@ -2,8 +2,9 @@ backend:
   name: git-gateway
   branch: main
 
+# Updated paths for the new account
 media_folder: "images/uploads"
-public_folder: "images/uploads"
+public_folder: "/images/uploads" 
 
 collections:
   - name: "inventory"
@@ -12,7 +13,6 @@ collections:
     create: true
     delete: true
     slug: "{{slug}}"
-    # Makes the list easy to read on her phone
     summary: "{{title}} - {{category}}" 
     fields:
       - { label: "Product Title", name: "title", widget: "string" }
@@ -26,14 +26,3 @@ collections:
           - { label: "Books", value: "books" }
       - { label: "Product Image", name: "image", widget: "image" }
       - { label: "Price", name: "price", widget: "string", required: false }
-
-  - name: "settings"
-    label: "Site Settings"
-    delete: false
-    files:
-      - name: "contact_info"
-        label: "Contact & Socials"
-        file: "content/settings/contact.json"
-        fields:
-          - { label: "WhatsApp Number", name: "whatsapp", widget: "string" }
-          - { label: "Business Location", name: "address", widget: "text" }
