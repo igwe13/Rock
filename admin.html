@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Rocky House | Premium Management</title>
+  
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <style>
+    /* Premium Dashboard Styling */
+    body { background-color: #0a0a0a; margin: 0; }
+    
+    /* Force the CMS UI to be mobile-friendly */
+    .nc-app-container { min-width: 100% !important; }
+    div[class*="PaneContainer"] { flex-direction: column !important; }
+    
+    /* Brand Colors for Login */
+    #nc-root [class*="AppHeader-container"] { background-color: #0a0a0a !important; border-bottom: 2px solid #f39c12 !important; }
+    button[class*="LoginButton"] { background-color: #f39c12 !important; color: white !important; font-weight: bold !important; }
+  </style>
+</head>
+<body>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <script>
+    // Security Handshake for Vercel
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+
+    // Custom Font Loading
+    CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap");
+  </script>
+</body>
+</html>
